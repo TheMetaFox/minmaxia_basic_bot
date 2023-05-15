@@ -1,16 +1,21 @@
 import time
 import pyautogui
 import keyboard
+import win32api, win32con
 
 
 def print_pixel_information():
     pyautogui.displayMousePosition()
 
 def click(location):
-    x, y = location[0], location[1]
-    pyautogui.moveTo(x, y)  # move mouse to XY coordinates over num_second seconds
-    pyautogui.click(clicks=1)
-    pyautogui.moveTo(200,500)
+    #x, y = location[0], location[1]
+    #pyautogui.moveTo(x, y)  # move mouse to XY coordinates over num_second seconds
+    #pyautogui.click(clicks=1)
+    #pyautogui.moveTo(200,500)
+    win32api.SetCursorPos(location)
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
+    time.sleep(0.01)
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
 
 upgrade_rgb = (85,119,255)
 prestige_rgb = (221,68,0)
@@ -25,7 +30,8 @@ location_dict = {"Location 1":(440,200),
                 "Location 9":(440,720),
                 "Location 10":(440,785),
                 "Location 11":(440,850),
-                "Location 12":(440,915)}
+                "Location 12":(440,915),
+                "Location 13":(440,980)}
 
 '''location_dict = {"Location 1":(440,200),
                 "Location 2":(440,270),
