@@ -8,14 +8,12 @@ def print_pixel_information():
     pyautogui.displayMousePosition()
 
 def click(location):
-    #x, y = location[0], location[1]
-    #pyautogui.moveTo(x, y)  # move mouse to XY coordinates over num_second seconds
-    #pyautogui.click(clicks=1)
-    #pyautogui.moveTo(200,500)
     win32api.SetCursorPos(location)
+    time.sleep(0.01)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
     time.sleep(0.01)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
+    time.sleep(0.01)
 
 upgrade_rgb = (85,119,255)
 prestige_rgb = (221,68,0)
@@ -31,20 +29,9 @@ location_dict = {"Location 1":(440,200),
                 "Location 10":(440,785),
                 "Location 11":(440,850),
                 "Location 12":(440,915),
-                "Location 13":(440,980)}
-
-'''location_dict = {"Location 1":(440,200),
-                "Location 2":(440,270),
-                "Location 3":(440,340),
-                "Location 4":(440,410),
-                "Location 5":(440,480),
-                "Location 6":(440,550),
-                "Location 7":(440,620),
-                "Location 8":(440,690),
-                "Location 9":(440,760),
-                "Location 10":(440,830),
-                "Location 11":(440,900)}'''
-
+                "Location 13":(440,980),
+                "Location 14":(440,1045),
+                "Location 15":(440,1110)}
 
 paused = True
 
@@ -68,6 +55,8 @@ while True:
             if (pixel_r == prestige_rgb[0]):
                 click(location_dict[location])
                 continue
+        win32api.SetCursorPos((200,500))
+
 
     if keyboard.is_pressed('p'):
         paused = paused == False
